@@ -22,6 +22,7 @@ public class Build {
     private Long id;
     private String name;
     private Float totalPrice;
+    private float discount;
 
     @ManyToOne
     @JoinColumn(name = "user_id") // Foreign key to the User table
@@ -42,10 +43,11 @@ public class Build {
     public Build() {
     }
 
-    public Build(String name, Float totalPrice, User user) {
+    public Build(String name, Float totalPrice, User user, float disc) {
         this.name = name;
         this.totalPrice = totalPrice;
         this.user = user;
+        this.discount = disc;
     }
 
     // Getters and Setters
@@ -144,17 +146,8 @@ public class Build {
         System.out.println("Total price of the build: $" + totalPrice);
     }
 
-    public void apply_discount(String code) {
+    public void apply_discount() {
         // Example logic for discount code validation
-        float discount = 0.0f;
-        if ("SAVE10".equals(code)) {
-            discount = 0.10f; // 10% discount
-        } else if ("SAVE20".equals(code)) {
-            discount = 0.20f; // 20% discount
-        } else {
-            System.out.println("Invalid discount code.");
-            return;
-        }
 
         Float discountedPrice = totalPrice - (totalPrice * discount);
         setTotalPrice(discountedPrice);

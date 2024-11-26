@@ -22,6 +22,8 @@ public class Promotion {
 
     private LocalDate activeTo;
 
+    private String manufacturer;
+
     @ManyToMany(mappedBy = "promotions")
     private List<Part> parts;
 
@@ -29,10 +31,11 @@ public class Promotion {
     public Promotion() {
     }
 
-    public Promotion(String name, LocalDate activeFrom, LocalDate activeTo) {
+    public Promotion(String name, LocalDate activeFrom, LocalDate activeTo, String manfact) {
         this.name = name;
         this.activeFrom = activeFrom;
         this.activeTo = activeTo;
+        this.manufacturer = manfact;
     }
 
     // Getters and Setters
@@ -82,6 +85,7 @@ public class Promotion {
      */
     public void showPromotionDetails() {
         System.out.println("Promotion Name: " + name);
+        System.out.println("Manufacturer Name: " + manufacturer);
         System.out.println("Active From: " + activeFrom);
         System.out.println("Active To: " + activeTo);
         if (parts != null && !parts.isEmpty()) {

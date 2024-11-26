@@ -1,9 +1,18 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.*;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Part {
@@ -99,7 +108,7 @@ public class Part {
     public void show_price_history() {
         // Placeholder implementation for price history
         System.out.println("Displaying price history for part: " + name);
-        // Real implementation would fetch historical price changes from a dedicated table or service.
+        // Real implementation would fetch historical price changes from the database.
     }
 
     public void edit_options() {
